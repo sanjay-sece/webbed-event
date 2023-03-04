@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guess the Day</title>
+	<script type="text/javascript">
+		// JavaScript code for the game
+        const startButton = document.getElementById('start-button');
+const submitButton = document.getElementById('submit-button');
+const restartButton = document.getElementById('restart-button');
+const timerElement = document.getElementById('timer');
+const timeRemainingElement = document.getElementById('time-remaining');
+const scoreElement = document.getElementById('score');
+const currentDateElement = document.getElementById('current-date');
+const resultTextElement = document.getElementById('result-text');
+const highestScoreValueElement = document.getElementById('highest-score-value');
+const optionsElement = document.getElementById('options');
+
+// Set up global variables
+let timeRemaining = 30;
+let currentScore = 0;
+let highestScore = 0;
+let currentDate;
+
+// Set up date generation function
+function generateDate() {
+    const year = Math.floor(Math.random() * 201) + 1900; // Generate a random year between 1900 and 2100
+    const month = Math.floor(Math.random() * 12) + 1; // Generate a random month between 1 and 12
+    const daysInMonth = new Date(year, month, 0).getDate(); // Get the number of days in the month
+    const day = Math.floor(Math.random() * daysInMonth) + 1; // Generate a random day between 1 and the number of days in the month
+    const date = new Date(year, month - 1, day); // Create a new Date object with the generated year, month, and day
+    return date;
+}
+
+// Set up function to update the game UI
+function updateUI() {
+    currentDateElement.innerHTML = `${currentDate.getMonth() + 1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
+    timeRemainingElement.innerHTML = timeRemaining;
+    scoreElement.innerHTML= currentScore;
+    highestScoreValueElement.innerHTML = highestScore;
+}
+
+// Set up function to start the game
+	</script>
+	<style type="text/css">
+		body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+#game {
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#start {
+    margin-top: 50px;
+}
+
+#start-button {
+    font-size: 24px;
+    padding: 10px 20px;
+}
+
+#gameplay {
+    margin-top: 50px;
+}
+
+#timer {
+    font-size: 48px;
+}
+
+#options {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#options li {
+    margin: 10px;
+}
+
+.option {
+    font-size: 24px;
+    padding: 10px 20px;
+}
+
+#submit-button {
+    font-size: 24px;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+#result {
+    margin-top: 50px;
+}
+
+#restart-button {
+    font-size: 24px;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+#result-text {
+    font-size: 24px;
+}
+	</style>
+</head>
+<body>
+	<div id="game-container">
+		<h1>Guess the Day</h1>
+		
+		<div id="timer">Time: <span id="time-remaining">30</span> seconds</div>
+		<div id="score">Score: <span id="current-score">0</span></div>
+		<div id="highest-score">Highest Score: <span id="highest-score-value">0</span></div>
+		<div id="date">Date: <span id="current-date">--/--/--</span></div>
+		<div id="options">
+			<input type="radio" name="day" value="Monday">Monday<br>
+			<input type="radio" name="day" value="Tuesday">Tuesday<br>
+			<input type="radio" name="day" value="Wednesday">Wednesday<br>
+			<input type="radio" name="day" value="Thursday">Thursday<br>
+			<input type="radio" name="day" value="Friday">Friday<br>
+			<input type="radio" name="day" value="Saturday">Saturday<br>
+			<input type="radio" name="day" value="Sunday">Sunday<br>
+		</div>
+		<button id="submit-button">Submit</button>
+		<div id="result">Result: <span id="result-text">--</span></div>
+		<button id="restart-button">Restart</button>
+	</div>
+</body>
+</html>
